@@ -9,27 +9,33 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    var page = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         usersRecyclerView.layoutManager = LinearLayoutManager(this)
-        usersRecyclerView.adapter = UsersAdapter()
+
 
         mainBtn.setOnClickListener {
-            getPosts()
+
+            getPosts(page)
+            page++
+
+            println("Page number: $page")
         }
     }
 
-    fun getPosts(){
-        Fuel.get("https://api.github.com/users?since=1&per_page=10")
+    private fun getPosts(page: Int){
+        Fuel.get("https://api.github.com/users?since=$page&per_page=10")
             .responseString { request, response, result ->
                 val usersData = result.get()
-                val data: List<Users> = Gson().fromJson(usersData, Array<Users>::class.java).toList()
-                data.forEach {
-                    println(it.login)
-                }
+                val data: MutableList<Users> = Gson().fromJson(usersData, Array<Users>::class.java).toMutableList()
+                val adapter = UsersAdapter()
+                adapter.addData(data)
+                usersRecyclerView.adapter = adapter
             }
 
     }
