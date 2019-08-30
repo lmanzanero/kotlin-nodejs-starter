@@ -10,18 +10,19 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     var page = 0
+    var adapter = UsersAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
         usersRecyclerView.layoutManager = LinearLayoutManager(this)
-
+        usersRecyclerView.adapter = adapter
 
         mainBtn.setOnClickListener {
 
-            getPosts(page)
+            runOnUiThread {
+                getPosts(page)
+            }
             page++
 
             println("Page number: $page")
@@ -33,9 +34,9 @@ class MainActivity : AppCompatActivity() {
             .responseString { request, response, result ->
                 val usersData = result.get()
                 val data: MutableList<Users> = Gson().fromJson(usersData, Array<Users>::class.java).toMutableList()
-                val adapter = UsersAdapter()
+
                 adapter.addData(data)
-                usersRecyclerView.adapter = adapter
+                adapter.notifyDataSetChanged()
             }
 
     }

@@ -29,8 +29,9 @@ class UsersAdapter : RecyclerView.Adapter<ViewHolder>() {
     fun addData(listItems: MutableList<Users>){
         var size = usersList.size
         usersList.addAll(listItems)
+
         var newSize = usersList.size
-        notifyDataSetChanged()
+        notifyItemRangeChanged(size, newSize)
     }
 }
 
