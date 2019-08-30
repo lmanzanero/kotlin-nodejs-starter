@@ -3,6 +3,7 @@ package com.example.luismanzanero.kotlinnodejsstarter
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.LinearLayout
 import com.github.kittinunf.fuel.Fuel
 import com.google.gson.Gson
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getPosts(page: Int){
+        progressBar2.visibility = View.VISIBLE
         Fuel.get("https://api.github.com/users?since=$page&per_page=10")
             .responseString { request, response, result ->
                 val usersData = result.get()
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
                 adapter.addData(data)
                 adapter.notifyDataSetChanged()
+                progressBar2.visibility = View.GONE
             }
 
     }
