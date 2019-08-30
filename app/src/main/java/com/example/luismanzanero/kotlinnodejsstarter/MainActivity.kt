@@ -32,10 +32,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun getPosts(page: Int){
         progressBar2.visibility = View.VISIBLE
-        Fuel.get("https://api.github.com/users?since=$page&per_page=10")
+        Fuel.get("https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc&page=$page&per_page=10")
             .responseString { request, response, result ->
                 val usersData = result.get()
-                val data: MutableList<Users> = Gson().fromJson(usersData, Array<Users>::class.java).toMutableList()
+
+                val data = Gson().fromJson(usersData, Users::class.java)
 
                 adapter.addData(data)
                 adapter.notifyDataSetChanged()

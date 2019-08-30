@@ -8,7 +8,8 @@ import kotlinx.android.synthetic.main.users_row.view.*
 
 class UsersAdapter : RecyclerView.Adapter<ViewHolder>() {
 
-    var usersList: MutableList<Users> = ArrayList()
+    var usersList: MutableList<Items> = ArrayList()
+    var usersId: MutableList<Users> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.context)
@@ -23,12 +24,18 @@ class UsersAdapter : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var data = usersList.get(position)
-        holder.view.usersButton.text = data.login
+        var items = usersList.get(position)
+        holder.buttonName?.text = data.name
+        holder.itemsName?.text = items.owner.login
     }
 
-    fun addData(listItems: MutableList<Users>){
+    fun addData(listItems: Users){
         var size = usersList.size
-        usersList.addAll(listItems)
+        usersList.addAll(listItems.items)
+
+        listItems.items.forEach {
+            println(it.owner.login)
+        }
 
         var newSize = usersList.size
         notifyItemRangeChanged(size, newSize)
@@ -36,5 +43,6 @@ class UsersAdapter : RecyclerView.Adapter<ViewHolder>() {
 }
 
 class ViewHolder(val view: View) : RecyclerView.ViewHolder(view){
-    val buttonName = view.usersButton.text
+    val buttonName = view.total_count
+    val itemsName = view.items_name
 }
