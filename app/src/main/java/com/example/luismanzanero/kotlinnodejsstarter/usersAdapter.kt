@@ -18,7 +18,7 @@ class UsersAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        println("From Item Count: ${usersList.size}")
+        println("UserList Size: ${usersList.size}")
         return usersList.size
     }
 
