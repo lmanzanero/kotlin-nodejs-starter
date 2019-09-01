@@ -21,7 +21,8 @@ class MainActivity : AppCompatActivity() {
         usersRecyclerView.layoutManager =  layoutManager
         usersRecyclerView.adapter = adapter
         swipeRefresh.setOnRefreshListener {
-            getPosts(0)
+            page = 0
+            getPosts(page)
             adapter.usersList.removeAll(adapter.usersList)
             swipeRefresh.isRefreshing = false
         }
