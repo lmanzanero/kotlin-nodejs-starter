@@ -30,15 +30,10 @@ class UsersAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
 
     fun addData(listItems: Users){
-        var size = usersList.size
         usersList.addAll(listItems.items)
-
         listItems.items.forEach {
             println(it.owner.login)
         }
-
-        var newSize = usersList.size
-        notifyItemRangeChanged(size, newSize)
     }
 }
 

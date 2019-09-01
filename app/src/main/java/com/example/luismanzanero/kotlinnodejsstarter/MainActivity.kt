@@ -30,9 +30,14 @@ class MainActivity : AppCompatActivity() {
                 val visibleItemCount = usersRecyclerView.layoutManager!!.childCount
                 val totalItemCount = usersRecyclerView.layoutManager!!.itemCount
                 val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
-                if((visibleItemCount + firstVisibleItemPosition) >= totalItemCount){
+                val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
+//                if(visibleItemCount + firstVisibleItemPosition >= totalItemCount && firstVisibleItemPosition >= 0){
 //                   getPosts(page)
-                    println("Loading new page")
+//                    println("Loading new page")
+//                }
+                println("Total Item Count: $totalItemCount and last visible item: $lastVisibleItemPosition")
+                if(lastVisibleItemPosition + 1 == totalItemCount){
+                    getPosts(page)
                 }
             }
         })
@@ -48,8 +53,8 @@ class MainActivity : AppCompatActivity() {
                 adapter.addData(data)
                 adapter.notifyDataSetChanged()
                 progressBar2.visibility = View.GONE
+                page++
             }
-        page++
         println("Current Page: $page")
     }
 }
