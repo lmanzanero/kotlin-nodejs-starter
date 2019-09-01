@@ -20,6 +20,11 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         usersRecyclerView.layoutManager =  layoutManager
         usersRecyclerView.adapter = adapter
+        swipeRefresh.setOnRefreshListener {
+            getPosts(0)
+            adapter.usersList.removeAll(adapter.usersList)
+            swipeRefresh.isRefreshing = false
+        }
         runOnUiThread {
             getPosts(page)
         }
