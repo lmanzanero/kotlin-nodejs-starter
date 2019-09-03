@@ -1,12 +1,16 @@
 package com.example.luismanzanero.kotlinnodejsstarter
 
+import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.users_row.view.*
 
-class UsersAdapter : RecyclerView.Adapter<ViewHolder>() {
+class UsersAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
     var usersList: MutableList<Items> = ArrayList()
     var usersId: MutableList<Users> = ArrayList()
@@ -27,6 +31,13 @@ class UsersAdapter : RecyclerView.Adapter<ViewHolder>() {
         var items = usersList.get(position)
         holder.buttonName?.text = data.name
         holder.itemsName?.text = items.owner.login
+
+        //Add click listener to each card item
+        holder.view.cards_row.setOnClickListener {
+            Toast.makeText(context,"${data.name}",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this.context, UserScreen::class.java)
+            startActivity(this.context, intent, null)
+        }
     }
 
     fun addData(listItems: Users){

@@ -16,7 +16,7 @@
             android:layout_marginStart="8dp" app:cardBackgroundColor="@android:color/holo_blue_dark">
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" android:id="@+id/cards_row">
 
             <TextView
                     android:text="Main Text"

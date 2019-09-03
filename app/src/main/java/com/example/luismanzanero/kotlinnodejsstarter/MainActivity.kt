@@ -10,7 +10,7 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    var adapter = UsersAdapter()
+    var adapter = UsersAdapter(this)
     var page = 0
 
 
