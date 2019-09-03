@@ -36,6 +36,7 @@ class UsersAdapter(private val context: Context) : RecyclerView.Adapter<ViewHold
         holder.view.cards_row.setOnClickListener {
             Toast.makeText(context,"${data.name}",Toast.LENGTH_SHORT).show()
             val intent = Intent(this.context, UserScreen::class.java)
+            intent.putExtra("data", data.name)
             startActivity(this.context, intent, null)
         }
     }
