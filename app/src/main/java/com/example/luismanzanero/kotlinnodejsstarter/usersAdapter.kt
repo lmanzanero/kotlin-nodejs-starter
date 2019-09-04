@@ -38,6 +38,7 @@ class UsersAdapter(private val context: Context) : RecyclerView.Adapter<ViewHold
             val intent = Intent(this.context, UserScreen::class.java)
             intent.putExtra("data", data.name)
             startActivity(this.context, intent, null)
+
         }
     }
 
