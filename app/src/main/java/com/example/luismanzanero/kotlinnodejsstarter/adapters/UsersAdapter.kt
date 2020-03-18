@@ -1,4 +1,4 @@
-package com.example.luismanzanero.kotlinnodejsstarter
+package com.example.luismanzanero.kotlinnodejsstarter.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.luismanzanero.kotlinnodejsstarter.Items
+import com.example.luismanzanero.kotlinnodejsstarter.R
+import com.example.luismanzanero.kotlinnodejsstarter.UserScreen
+import com.example.luismanzanero.kotlinnodejsstarter.Users
 import kotlinx.android.synthetic.main.users_row.view.*
 
 class UsersAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolder>() {
@@ -18,7 +22,9 @@ class UsersAdapter(private val context: Context) : RecyclerView.Adapter<ViewHold
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.context)
         val cellRow = layoutInflater.inflate(R.layout.users_row, parent, false)
-        return ViewHolder(cellRow)
+        return ViewHolder(
+            cellRow
+        )
     }
 
     override fun getItemCount(): Int {
