@@ -1,4 +1,4 @@
-package com.example.luismanzanero.kotlinnodejsstarter
+package com.example.luismanzanero.kotlinnodejsstarter.ui
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -24,6 +24,7 @@ import android.widget.TextView
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
 import android.content.Intent
+import com.example.luismanzanero.kotlinnodejsstarter.R
 
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -68,11 +69,16 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             return true
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(email, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(email,
+                R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                 .setAction(android.R.string.ok,
-                    { requestPermissions(arrayOf(READ_CONTACTS), REQUEST_READ_CONTACTS) })
+                    { requestPermissions(arrayOf(READ_CONTACTS),
+                        REQUEST_READ_CONTACTS
+                    ) })
         } else {
-            requestPermissions(arrayOf(READ_CONTACTS), REQUEST_READ_CONTACTS)
+            requestPermissions(arrayOf(READ_CONTACTS),
+                REQUEST_READ_CONTACTS
+            )
         }
         return false
     }
@@ -199,7 +205,8 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             Uri.withAppendedPath(
                 ContactsContract.Profile.CONTENT_URI,
                 ContactsContract.Contacts.Data.CONTENT_DIRECTORY
-            ), ProfileQuery.PROJECTION,
+            ),
+            ProfileQuery.PROJECTION,
 
             // Select only email addresses.
             ContactsContract.Contacts.Data.MIMETYPE + " = ?", arrayOf(

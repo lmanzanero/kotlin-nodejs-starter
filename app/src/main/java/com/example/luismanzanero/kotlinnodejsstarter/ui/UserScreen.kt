@@ -1,7 +1,8 @@
-package com.example.luismanzanero.kotlinnodejsstarter
+package com.example.luismanzanero.kotlinnodejsstarter.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.luismanzanero.kotlinnodejsstarter.R
 import kotlinx.android.synthetic.main.activity_user_screen.*
 
 class UserScreen : AppCompatActivity() {

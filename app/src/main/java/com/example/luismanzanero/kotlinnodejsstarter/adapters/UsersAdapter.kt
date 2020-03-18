@@ -8,10 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.luismanzanero.kotlinnodejsstarter.Items
+import com.example.luismanzanero.kotlinnodejsstarter.ui.data.Items
 import com.example.luismanzanero.kotlinnodejsstarter.R
-import com.example.luismanzanero.kotlinnodejsstarter.UserScreen
-import com.example.luismanzanero.kotlinnodejsstarter.Users
+import com.example.luismanzanero.kotlinnodejsstarter.ui.UserScreen
+import com.example.luismanzanero.kotlinnodejsstarter.ui.data.Users
 import kotlinx.android.synthetic.main.users_row.view.*
 
 class UsersAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolder>() {

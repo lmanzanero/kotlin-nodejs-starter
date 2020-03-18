@@ -1,10 +1,12 @@
-package com.example.luismanzanero.kotlinnodejsstarter
+package com.example.luismanzanero.kotlinnodejsstarter.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.example.luismanzanero.kotlinnodejsstarter.R
+import com.example.luismanzanero.kotlinnodejsstarter.ui.data.Users
 import com.example.luismanzanero.kotlinnodejsstarter.adapters.UsersAdapter
 import com.github.kittinunf.fuel.Fuel
 import com.google.gson.Gson
